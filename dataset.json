@@ -1,0 +1,12 @@
+[
+{"symbol":"AAPL","frequency":"10"},
+{"symbol":"ACAD","frequency":"43"},
+{"symbol":"AMZN","frequency":"60"},
+{"symbol":"BBRY","frequency":"45"},
+{"symbol":"CL_F","frequency":"70"},
+{"symbol":"COMPQ","frequency":"11"},
+{"symbol":"ES_F","frequency":"48"},
+{"symbol":"GOOG","frequency":"52"},
+{"symbol":"SPX","frequency":"77"},
+{"symbol":"VIX","frequency":"49"}
+]
