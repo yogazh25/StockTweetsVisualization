@@ -1,0 +1,7 @@
+[
+    {"symbol": "NOK", "freq": 40, "time":"12:00:00"},
+    {"symbol": "NOK", "freq": 80, "time":"12:00:30"},
+    {"symbol": "NOK", "freq": 50, "time":"12:01:00"},
+    {"symbol": "NOK", "freq": 90, "time":"12:01:30"},
+    {"symbol": "NOK", "freq": 100, "time":"12:02:00"}
+]

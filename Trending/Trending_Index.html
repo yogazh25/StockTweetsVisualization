@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>Trending</title>
+		<script src="http://d3js.org/d3.v2.js"></script>
+		<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script src="TrendingData.js"></script>
+		<script src="TrendingAction.js"></script>
+		<link rel="stylesheet" href="style.css" type="text/css">
+		<style>
+			body {
+				font-family: "Helvetica Neue", Helvetica;
+			}
+					
+			p {
+				clear:both;
+				top: 20px;
+			}		
+					
+			div.aGraph {
+				margin-bottom: 30px;
+			}
+		</style>
+	</head>
+	<body>
+	<div id="graph_TOP10/donut" class="aGraph" style="position:relative;width:100%;height:400px"></div>
+	<div id="line_graph" class="aGraph" style="float:left;position:relative;width:60%;height:200px"></div>
+
+	<script>
+		 // add presentation logic for 'data' object using optional data arguments
+		 data3["displayNames"] = ["Price", "Message"];
+		 data3["axis"] = ["left", "right"];
+		 data3["colors"] = ["#2863bc","#c8801c"];
+		 data3["rounding"] = [2, 0];
+        
+		 // create graph now that we've added presentation config
+		var l3 = new LineGraph({containerId: 'line_graph', data: data3});
+		
+	setInterval(function() {
+	   //Simulate live updating of the data --> see dataA, dataB, dataC in TrendingData.js
+		var newData = [];
+		data.values.forEach(function(dataSeries, index) {
+			var v = dataSeries.shift();
+			dataSeries.push(v);
+			newData[index] = [v];
+		})
+		
+		// Reuse dataA each time, increment time 1 step
+		dataA.values = newData;
+		dataA.start = dataA.start + dataA.step;
+		dataA.end = dataA.end + dataA.step; 
+					
+		l1.slideData(dataA);
+	}, 2000);
+
+		
+	</script>
+	</body>
+</html>
