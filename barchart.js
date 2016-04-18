@@ -2,7 +2,7 @@ var data = [];
     
     var svgWidth = 640,
         svgHeight = 320,
-        margin = {top: 60, right: 20, bottom: 30, left: 20},
+        margin = {top: 60, right: 20, bottom: 30, left: 100},
         width = svgWidth - margin.left - margin.right,
         height = svgHeight - margin.top - margin.bottom;
     
@@ -88,13 +88,13 @@ var data = [];
 				.style("stop-color",b.toString());
         
     var colorRect = svg.append("rect")
-				.attr("x", 730)
+				.attr("x", 530)
 				.attr("y", 50)
 				.attr("width", 30)
 				.attr("height", 100)
 				.style("fill","url(#" + linearGradient.attr("id") + ")");
     var text_1 = svg.append("text")
-		.attr("x",700)
+		.attr("x",500)
 		.attr("y",45)
         .attr("fill", "black")
 		.attr("font-size", "15px")
@@ -102,7 +102,7 @@ var data = [];
 		.text("Total like");
         
     var text_2 = svg.append("text")
-		.attr("x",700)
+		.attr("x",500)
 		.attr("y",65)
         .attr("fill", "black")
 		.attr("font-size", "20px")
@@ -110,7 +110,7 @@ var data = [];
 		.text("max");
         
     var text_3 = svg.append("text")
-		.attr("x",700)
+		.attr("x",500)
 		.attr("y",150)
         .attr("fill", "black")
 		.attr("font-size", "20px")
