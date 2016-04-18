@@ -1,0 +1,11 @@
+[
+{"symbol":"Financial","frequency":"10"},
+{"symbol":"Service","frequency":"43"},
+{"symbol":"Healthcare","frequency":"60"},
+{"symbol":"Technology","frequency":"45"},
+{"symbol":"Basic Materials","frequency":"70"},
+{"symbol":"Industrial Goods","frequency":"11"},
+{"symbol":"Consumer Goods","frequency":"48"},
+{"symbol":"Utilities","frequency":"52"},
+{"symbol":"Others","frequency":"77"}
+]

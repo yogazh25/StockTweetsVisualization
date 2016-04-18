@@ -1,0 +1,18 @@
+#barchart{
+        background-color: antiquewhite;
+    }
+    #chart{
+        background-color: aqua;
+    }
+    .axis {
+        font: 10px sans-serif;
+    }
+    .axis path,
+    .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+    }
+    .y.axis path {
+        display: none;
+    }
