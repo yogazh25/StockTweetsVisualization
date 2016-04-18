@@ -1,6 +1,6 @@
 var data = [];
     
-    var svgWidth = 640,
+    var svgWidth = 320,
         svgHeight = 320,
         margin = {top: 60, right: 20, bottom: 30, left: 100},
         width = svgWidth - margin.left - margin.right,
@@ -40,14 +40,14 @@ var data = [];
         x.domain([0, d3.max(data, function(d) { return d.frequency; })]);
         y.domain(data.map(function(d) { return d.symbol; }));
         cScale.domain([0,d3.max(data, function(d) { return d.frequency; })]);
-        var dev = d3.max(data, function(d){return d.frequency;}) / 5;
+        var dev = d3.max(data, function(d){return d.frequency;}) / 20;
         
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis)
         .append("text")
-        .attr("x", 820)
+        .attr("x", 320)
         .attr("dx", ".70em")
         .style("text-anchor", "end")
         .text("Frequency");
@@ -59,7 +59,7 @@ var data = [];
         .enter()
         .append("rect")
         .on("click", function(){
-            createWindow();
+            createTreemap();
         })
         .attr("class", "bar")
         .attr("y", function(d) { return y(d.symbol); })
@@ -88,32 +88,32 @@ var data = [];
 				.style("stop-color",b.toString());
         
     var colorRect = svg.append("rect")
-				.attr("x", 530)
+				.attr("x", 300)
 				.attr("y", 50)
 				.attr("width", 30)
 				.attr("height", 100)
 				.style("fill","url(#" + linearGradient.attr("id") + ")");
     var text_1 = svg.append("text")
-		.attr("x",500)
+		.attr("x",270)
 		.attr("y",45)
         .attr("fill", "black")
-		.attr("font-size", "15px")
+		.attr("font-size", "10px")
 		.attr("font-family","simsun")
 		.text("Total like");
         
     var text_2 = svg.append("text")
-		.attr("x",500)
+		.attr("x",270)
 		.attr("y",65)
         .attr("fill", "black")
-		.attr("font-size", "20px")
+		.attr("font-size", "10px")
 		.attr("font-family","simsun")
 		.text("max");
         
     var text_3 = svg.append("text")
-		.attr("x",500)
+		.attr("x",270)
 		.attr("y",150)
         .attr("fill", "black")
-		.attr("font-size", "20px")
+		.attr("font-size", "10px")
 		.attr("font-family","simsun")
 		.text("0");
     });
@@ -124,3 +124,51 @@ var data = [];
             .attr("width","1060px")
             .attr("margin","50px auto")
     }
+
+function createTreemap(){
+
+var margin = {top: 40, right: 10, bottom: 10, left: 10},
+    width = 320 - margin.left - margin.right,
+    height = 340 - margin.top - margin.bottom;
+
+/* treemap layout*/
+var treemap = d3.layout.treemap()
+    .size([width, height])
+    .sticky(true)
+    .value(function(d) { return d.size; });
+
+var div = d3.select("body").append("div")
+    .style("position", "relative")
+    .style("width", (width + margin.left + margin.right) + "px")
+    .style("height", (height + margin.top + margin.bottom) + "px")
+    .style("left", margin.left + "px")
+    .style("top", margin.top + "px");
+    
+
+/*linear color scale*/
+var color_scale = d3.scale.linear()
+   .domain([0,4])
+   .interpolate(d3.interpolateHcl)
+   .range(["green","red"]);
+
+d3.json("treemap.json", function(error, root) {
+  if (error) throw error;
+
+/*Tree node*/
+  var node = div.datum(root).selectAll(".node")
+      .data(treemap.nodes)
+      .enter().append("div")
+      .attr("class", "node")
+      .call(position)
+      .style("background", function(d) {return color_scale(d.size);})
+      .text(function(d) { return d.children? null : d.name; });
+});
+
+/*rect position*/
+function position() {
+  this.style("left", function(d) { return d.x + "px"; })
+      .style("top", function(d) { return d.y + "px"; })
+      .style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })
+      .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; });
+}
+}
