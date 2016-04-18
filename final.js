@@ -1,5 +1,5 @@
 var margin = {top: 40, right: 10, bottom: 10, left: 10},
-    width = 640 - margin.left - margin.right,
+    width = 320 - margin.left - margin.right,
     height = 320 - margin.top - margin.bottom;
 
 /* treemap layout*/
